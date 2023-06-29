@@ -19,7 +19,9 @@ public class Main_Class {
 		
         esercizio3 esercizio3 = new esercizio3();
         esercizio3.suddividiStringa();
-
+        
+        Esercizio_4 conteggio = new Esercizio_4();
+        conteggio.contoAllaRovescia();
 	}
 
 }

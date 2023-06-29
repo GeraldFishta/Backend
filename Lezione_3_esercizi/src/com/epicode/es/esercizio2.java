@@ -8,8 +8,7 @@ public class esercizio2 {
 		
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Inserisci un numero compreso tra 0 e 3: ");
-		int numero = scanner.nextInt();
-		scanner.close();	
+		int numero = scanner.nextInt();	
 		
 		String numeroInLettere = stampaNumeri(numero);
 			if (numeroInLettere != null) {

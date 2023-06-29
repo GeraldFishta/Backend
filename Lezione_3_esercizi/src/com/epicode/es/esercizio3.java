@@ -28,7 +28,6 @@ public class esercizio3 {
 		}
 		} while (!input.equals(":q"));
 		
-		scanner.close();
 	
 }
 }
