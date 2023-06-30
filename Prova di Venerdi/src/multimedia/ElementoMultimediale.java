@@ -11,7 +11,10 @@ public abstract class ElementoMultimediale {
 		this.titolo = titolo; 
 		this.durata = durata; 
 	}
-
+	
+	public String toString() {
+        return getTitolo();
+	}
 	public String getTitolo() {
 		return titolo; 
 	}
