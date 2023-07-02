@@ -7,7 +7,7 @@ public class Main_Project {
         Scanner scanner = new Scanner(System.in);
         ElementoMultimediale[] elementi = new ElementoMultimediale[5];
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < elementi.length ; i++) {
             System.out.println("Elemento " + (i + 1));
             System.out.println("Seleziona il tipo di elemento:");
             System.out.println("1. Immagine");
@@ -51,7 +51,8 @@ public class Main_Project {
         for (ElementoMultimediale elemento : elementi) {
             if (elemento != null) {
                 String tipo = elemento.getClass().getSimpleName();
-                System.out.println(tipo + ": " + elemento.toString());
+                System.out.print(tipo + ": ");
+                elemento.play();
             }
         }
 
@@ -66,11 +67,15 @@ public class Main_Project {
                     if (elemento instanceof Immagine) {
                         Immagine immagine = (Immagine) elemento;
                         immagine.show();
+                    } else if (elemento instanceof RegistrazioneAudio) {
+                        RegistrazioneAudio registrazioneAudio = (RegistrazioneAudio) elemento;
+                        registrazioneAudio.play();
+                    } else if (elemento instanceof Video) {
+                        Video video = (Video) elemento;
+                        video.play();
                     } else {
-                        elemento.play();
+                        System.out.println("Elemento non trovato.");
                     }
-                } else {
-                    System.out.println("Elemento non trovato.");
                 }
             } else if (scelta == 0) {
                 continua = false;
@@ -82,4 +87,5 @@ public class Main_Project {
 
         scanner.close();
     }
+
 }

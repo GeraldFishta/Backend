@@ -27,9 +27,13 @@ public class RegistrazioneAudio extends ElementoMultimediale {
 	}
 	
 	public void play() {
-		for (int i = 0; i < getDurata(); i++) {
-			System.out.println(getTitolo() + ": " + "!".repeat(volume));
-		}
+	    for (int i = 0; i < getDurata(); i++) {
+	        String volumeString = "";
+	        for (int j = 0; j < getVolume(); j++) {
+	            volumeString += "!";
+	        }
+	        System.out.println(getTitolo() + ": " + volumeString);
+	    }
 	}
 	
 }

@@ -42,7 +42,15 @@ public class Video extends ElementoMultimediale {
 	}
 	
 	public void play() {
-		System.out.println(getTitolo() + ":" + "".repeat(volume) + "*".repeat(luminosita));
+	    String volumeString = "";
+	    for (int i = 0; i < getVolume(); i++) {
+	        volumeString += "!";
+	    }
+	    String luminositaString = "";
+	    for (int i = 0; i < getLuminosita(); i++) {
+	        luminositaString += "*";
+	    }
+	    System.out.println(getTitolo() + ": " + volumeString + luminositaString);
 	}
 	
 }

@@ -18,7 +18,11 @@ public class Immagine extends ElementoMultimediale {
     }
 
     public void show() {
-        System.out.println(getTitolo() + ": " + "*".repeat(luminosita));
+    	String luminositaString = "";
+	    for (int i = 0; i < getLuminosita(); i++) {
+	        luminositaString += "*";
+	    }
+	    System.out.println(getTitolo() + ": " + luminositaString);
     }
 }
 
