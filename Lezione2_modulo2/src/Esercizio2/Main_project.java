@@ -10,6 +10,8 @@ public class Main_project {
 
 	public static void main(String[] args) {
 		
+		
+		
 		randomizer();
 		
 		
@@ -24,6 +26,8 @@ public class Main_project {
 		int numero = Integer.parseInt(scanner.nextLine());
 		
 		inverseList(arrayList(numero));
+		pariODispari(arrayList(numero), true);
+		
 	}
 
 	private static List<String> arrayList(int numero) {
@@ -56,8 +60,29 @@ public class Main_project {
 	  
 	  
 	  private static void pariODispari( List<String> Lista, boolean condizione) {
-	       
 		  
+		 
+			  
+		  String posizione;
+		  
+		    if (condizione) {
+		        posizione = "pari";
+		    } else {
+		        posizione = "dispari";
+		    }
+		    System.out.println("Valori in posizione " + posizione + ":");
+
+		    int indice;
+		    if (condizione) {
+		        indice = 0;
+		    } else {
+		        indice = 1;
+		    }
+		    
+		    for (int i = indice; i < Lista.size(); i += 2) {
+		        System.out.println(Lista.get(i));
+		    }	  
+			  
 		  
   }
 }
