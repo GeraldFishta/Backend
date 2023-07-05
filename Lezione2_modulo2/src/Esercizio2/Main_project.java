@@ -65,7 +65,7 @@ public class Main_project {
 			  
 		  String posizione;
 		  
-		    if (condizione) {
+		    if (condizione == true) {
 		        posizione = "pari";
 		    } else {
 		        posizione = "dispari";
@@ -73,6 +73,7 @@ public class Main_project {
 		    System.out.println("Valori in posizione " + posizione + ":");
 
 		    int indice;
+		    
 		    if (condizione) {
 		        indice = 0;
 		    } else {
