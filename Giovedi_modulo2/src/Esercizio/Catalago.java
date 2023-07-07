@@ -42,7 +42,7 @@ public class Catalago {
 
 	        List<Order> filteredOrders = orderList.stream()
 	                .filter(order -> order.getProducts().stream()
-	                        .anyMatch(product -> product.getCategory().equals("Baby")))
+	                .anyMatch(product -> product.getCategory().equals("Baby")))
 	                .collect(Collectors.toList());
 
 	        //#Esercizio3
