@@ -8,10 +8,12 @@ public abstract class Elemento {
 	protected Integer numeroPagine;
 	
 	public Elemento(String isbn, String titolo, Integer annoPubblicazione, Integer numeroPagine) {
+		
 		this.isbn = isbn;
 		this.titolo = titolo;
 		this.annoPubblicazione = annoPubblicazione;
 		this.numeroPagine = numeroPagine;
+		
 	}
 
 	public String getIsbn() {

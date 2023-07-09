@@ -28,8 +28,8 @@ public class Libro extends Elemento {
 	}
 
 	
-	
 	public static String toStringFile(Libro libro) {
+		
 		return Libro.class.getSimpleName()  
 				+ "@" + libro.isbn
 				+ "@" + libro.titolo
@@ -40,6 +40,7 @@ public class Libro extends Elemento {
 	}
 
 	public static Libro fromStringFile(String stringFile) {
+		
 		String[] split = stringFile.split("@");
 		
 		return new Libro(split[1], split[2], Integer.valueOf(split[3]), Integer.valueOf(split[4]), split[5], split[6]);
