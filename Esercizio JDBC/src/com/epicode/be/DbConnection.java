@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class DbConnection {
 
 	String url = "jdbc:postgresql://localhost:5432/Esercizio2";
-	String user = "postegres";
+	String user = "postgres";
 	String pass = "root";
 	Statement st;
 	
@@ -18,10 +18,12 @@ public class DbConnection {
 		Connection conn = DriverManager.getConnection( url, user, pass);
 		st = conn.createStatement();
 		System.out.println("Connessione al DB avvenuta correttamente!");
+		createTable();
+		
 		
 	}
 	
-	private void createTable() throws SQLException {
+	public void createTable() throws SQLException {
 		
 		   String query = " CREATE TABLE IF NOT EXISTS school_students("
 
@@ -40,18 +42,18 @@ public class DbConnection {
 	}
 
 	
-	private void insertStudent( Studente s ) throws SQLException {
+	public void insertStudent( Studente s ) throws SQLException {
 		
 		String sql = "INSERT INTO school_students ("
 				+"name, lastname, gender, birthdate, avg, min_vote, max_vote)"
 				+ "VALUES ("
-				+ s.getName() + ", "
-			    + s.getLastname() + ", "
-				+ s.getGender() + ", "
-				+ s.getBirthdate() + ", "
+				+ "'" + s.getName() + " ', "
+			    + "'" +s.getLastname() + "', "
+				+ "'" +s.getGender() + "', "
+				+ "'" +s.getBirthdate() + "', "
 				+ s.getAvg() + ", "
 			    + s.getMin_vote() + ", "
-				+ s.getMax_vote() + ", "
+				+ s.getMax_vote()
 				+ ")";
 		st.executeUpdate(sql);
 		System.out.println(s.getName()+ " " + s.getLastname() + "studente inserito corretamente nel databse" );
@@ -59,19 +61,25 @@ public class DbConnection {
 		
 	}
 	
-	private void updateStudente (int id, HashMap<String, Object> s) {
+	public void updateStudente (int id, HashMap<String, Object> s) {
 		
 		
 		
 		
 	}	
 	
-	private void deleteStudente  (int id) throws SQLException {
+	public void deleteStudente (int id) throws SQLException {
 		
 		String sql = "DELETE FROM schoool_students WHERE id =" + id;
 		st.executeUpdate(sql);
 		System.out.println("Studente correttamente eliminato dal database");
 	}
 	
+    public void getBest() throws SQLException {
+    	
+    	String query = "SELECT * FROM school_students ORDER BY avg DESC LIMIT 1";
+    	st.executeUpdate(query);
+    	
+    }
 	
 }
