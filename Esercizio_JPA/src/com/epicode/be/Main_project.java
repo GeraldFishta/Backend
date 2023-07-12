@@ -1,7 +1,9 @@
 package com.epicode.be;
 
+import java.time.LocalDate;
 import java.util.Date;
 
+import enums.TipoEvento;
 import utils.JpaUtil;
 
 public class Main_project {
@@ -9,7 +11,7 @@ public class Main_project {
     public static void main(String[] args) {
         Evento evento = new Evento();
         evento.setTitolo("Evento di prova");
-        evento.setDataEvento(new Date());
+        evento.setDataEvento(null);
         evento.setDescrizione("Descrizione dell'evento");
         evento.setTipoEvento(TipoEvento.PUBBLICO);
         evento.setNumeroMassimoPartecipanti(100);
