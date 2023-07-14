@@ -1,14 +1,31 @@
 package com.epicode.models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Prestito {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+
+
+@Entity
+@Table( name = "prestiti")
+public class Prestito implements Serializable {
+	
+	@Id
+	@ManyToOne
 	private Utenti utente;
+	@ManyToOne
 	private Catalogo_Bibliotecario elementoPrestato;
+	@Column ( name = "inizio_prestito")
 	private LocalDate inizioPrestito;
+	@Column ( name = "data_di_restituzione_prevista")
 	private LocalDate dataRestituzionePrevista;
-	private LocalDate dataRestituzioneEffetiva;
+	@Column ( name = "data_di_restituzione_effettiva")
+	private LocalDate dataRestituzioneEffettiva;
 	
 	public Prestito() {
 		super();
@@ -20,8 +37,8 @@ public class Prestito {
 		this.utente = utente;
 		this.elementoPrestato = elementoPrestato;
 		this.inizioPrestito = inizioPrestito;
-		this.dataRestituzionePrevista = dataRestituzionePrevista;
-		this.dataRestituzioneEffetiva = dataRestituzioneEffetiva;
+		this.dataRestituzionePrevista = inizioPrestito.plusDays(30) ;
+		this.dataRestituzioneEffettiva = dataRestituzioneEffetiva;
 	}
 
 	public Utenti getUtente() {
@@ -57,11 +74,11 @@ public class Prestito {
 	}
 
 	public LocalDate getDataRestituzioneEffetiva() {
-		return dataRestituzioneEffetiva;
+		return dataRestituzioneEffettiva;
 	}
 
 	public void setDataRestituzioneEffetiva(LocalDate dataRestituzioneEffetiva) {
-		this.dataRestituzioneEffetiva = dataRestituzioneEffetiva;
+		this.dataRestituzioneEffettiva = dataRestituzioneEffetiva;
 	}
 	
 	

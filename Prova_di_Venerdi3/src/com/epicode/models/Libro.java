@@ -1,5 +1,8 @@
 package com.epicode.models;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Libro extends Catalogo_Bibliotecario {
 	
 	private String autore;
@@ -35,6 +38,12 @@ public class Libro extends Catalogo_Bibliotecario {
 
 	public void setGenere(String genere) {
 		this.genere = genere;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Libro [autore=" + autore + ", genere=" + genere + "]";
 	}
 	
 	

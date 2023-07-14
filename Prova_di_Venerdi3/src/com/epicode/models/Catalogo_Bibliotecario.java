@@ -1,17 +1,23 @@
 package com.epicode.models;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Catalogo_Bibliotecario {
 	
 	@Id
-	@GeneratedValue( strategy = GenerationType.IDENTITY )
-	public String codice_ISBN;
-	public String titolo;
-	public Integer annoPubblicazione;
-	public Integer numeroPagine;
+	private String codice_ISBN;
+	private String titolo;
+	@Column(name = "anno_di_pubblicazione")
+	private Integer annoPubblicazione;
+	@Column(name = "numero_di_pagine")
+	private Integer numeroPagine;
 	
 	
 	
@@ -19,7 +25,7 @@ public abstract class Catalogo_Bibliotecario {
 		super();
 	}
 
-
+	
 
 	public Catalogo_Bibliotecario(String codice_ISBN, String titolo, Integer annoPubblicazione, Integer numeroPagine) {
 		super();
@@ -55,6 +61,8 @@ public abstract class Catalogo_Bibliotecario {
 
 
 
+
+
 	public Integer getAnnoPubblicazione() {
 		return annoPubblicazione;
 	}
@@ -78,6 +86,12 @@ public abstract class Catalogo_Bibliotecario {
 	}
 	
 	
+	
+	@Override
+	public String toString() {
+		return "Catalogo_Bibliotecario [codice_ISBN=" + codice_ISBN + ", titolo=" + titolo + ", annoPubblicazione="
+				+ annoPubblicazione + ", numeroPagine=" + numeroPagine + "]";
+	}
 	
 	
 
