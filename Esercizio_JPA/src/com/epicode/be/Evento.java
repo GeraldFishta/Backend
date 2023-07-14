@@ -67,8 +67,8 @@ public class Evento {
 		return dataEvento;
 	}
 
-	public void setDataEvento(LocalDate dataEvento) {
-		this.dataEvento = dataEvento;
+	public void setDataEvento(LocalDate date) {
+		this.dataEvento = date;
 	}
 
 	public String getDescrizione() {
