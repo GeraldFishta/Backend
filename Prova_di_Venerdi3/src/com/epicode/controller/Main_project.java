@@ -28,6 +28,9 @@ public class Main_project {
     	Libro libro1 = new Libro("777","Sportwear", 2016, 777, "Dark Polo Gang", "Trap biografica");
     	//save(libro1);
     	
+    	Libro libro2 = new Libro("776","Portwear", 2017, 888, "Dark Coño Gangs", "Trap ma non troppo, biografica");
+//    	save(libro2);
+    	
     	Rivista rivista1 = new Rivista ("675","Life", 2023 , 35, Periodicita.SEMESTRALE);
     	//save(rivista1);
     	
@@ -50,6 +53,7 @@ public class Main_project {
     	getByTitle("Life");
     	elementsOut(4593);
     	expiredLoans(LocalDate.of(2023, 2, 3));
+    	delete("776");
     	
     	
     	} catch(SQLException e) {
