@@ -80,6 +80,13 @@ public class Prestito implements Serializable {
 	public void setDataRestituzioneEffetiva(LocalDate dataRestituzioneEffetiva) {
 		this.dataRestituzioneEffettiva = dataRestituzioneEffetiva;
 	}
+
+	@Override
+	public String toString() {
+		return "Prestito [utente=" + utente + ", elementoPrestato=" + elementoPrestato + ", inizioPrestito="
+				+ inizioPrestito + ", dataRestituzionePrevista=" + dataRestituzionePrevista
+				+ ", dataRestituzioneEffettiva=" + dataRestituzioneEffettiva + "]";
+	}
 	
 	
 	

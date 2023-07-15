@@ -26,7 +26,6 @@ public abstract class Catalogo_Bibliotecario {
 	}
 
 	
-
 	public Catalogo_Bibliotecario(String codice_ISBN, String titolo, Integer annoPubblicazione, Integer numeroPagine) {
 		super();
 		this.codice_ISBN = codice_ISBN;
@@ -60,9 +59,6 @@ public abstract class Catalogo_Bibliotecario {
 	}
 
 
-
-
-
 	public Integer getAnnoPubblicazione() {
 		return annoPubblicazione;
 	}
@@ -84,7 +80,6 @@ public abstract class Catalogo_Bibliotecario {
 	public void setNumeroPagine(Integer numeroPagine) {
 		this.numeroPagine = numeroPagine;
 	}
-	
 	
 	
 	@Override
