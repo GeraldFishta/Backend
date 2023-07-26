@@ -1,11 +1,15 @@
 package com.epicode.GodFathersPizza.classes;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @AllArgsConstructor
-@Getter
+@NoArgsConstructor
+@Data
 public class Tavolo {
 	
 	private Integer numero;
@@ -15,7 +19,8 @@ public class Tavolo {
 	public void setOccupato(Boolean occupato) {
 		this.occupato = occupato;
 	}
-	
+
+
 	
 
 }

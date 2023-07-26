@@ -15,8 +15,8 @@ public class GestioneMenu {
 	Menu menu;
 	
 	public GestioneMenu() {
-		appContext = new AnnotationConfigApplicationContext(MenuConfiguration.class);
-		menu =  (Menu) appContext.getBean("menu");
+//		appContext = new AnnotationConfigApplicationContext(MenuConfiguration.class);
+//		menu =  (Menu) appContext.getBean("menu");
 	}
 	
 	public void stampaMenu() {

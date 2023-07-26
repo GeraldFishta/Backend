@@ -2,9 +2,11 @@ package com.epicode.GodFathersPizza.classes;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.ToString;
 
 @AllArgsConstructor
 @Getter
+@ToString
 public abstract class PizzaBase implements FoodItem {
 	
 	private String name;

@@ -15,29 +15,9 @@ import com.epicode.GodFathersPizza.classes.Wine;
 @Configuration
 public class MenuConfiguration {
 
-	@Bean
-	@Scope("singleton")
-	public PizzaMargherita pizzaMargherita() {
-		return new PizzaMargherita();
-	};
-	
-	//Bean delle pizze
-	
-	@Bean
-	@Scope("singleton")
-	public PizzaHawaiiana pizzaHawaiiana() {
-		return new PizzaHawaiiana();
-	};
-	
-	@Bean
-	@Scope("singleton")
-	public PizzaSalami pizzaSalami() {
-		return new PizzaSalami();
-	};
-	
 	//Bean del menu
 	
-	@Bean
+	@Bean("menupizzeria")
 	@Scope("singleton")
 	public Menu menu() {
 		
@@ -53,6 +33,28 @@ public class MenuConfiguration {
 		return m;
 		
 	};
+	
+	//Bean delle pizze
+	
+	@Bean
+	@Scope("singleton")
+	public PizzaMargherita pizzaMargherita() {
+		return new PizzaMargherita();
+	};
+	
+	
+	@Bean
+	@Scope("singleton")
+	public PizzaHawaiiana pizzaHawaiiana() {
+		return new PizzaHawaiiana();
+	};
+	
+	@Bean
+	@Scope("singleton")
+	public PizzaSalami pizzaSalami() {  
+		return new PizzaSalami();
+	};
+	
 	
 	//Bean dei drink
 	
