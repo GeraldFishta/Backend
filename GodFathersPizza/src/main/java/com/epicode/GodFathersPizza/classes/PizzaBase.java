@@ -1,21 +1,16 @@
 package com.epicode.GodFathersPizza.classes;
 
-public abstract class PizzaBase {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
+public abstract class PizzaBase implements FoodItem {
 	
 	private String name;
 	private Double calories;
 	private Double price;
 	
-
-
-
-	public PizzaBase(String name, Double calories, Double price) {
-		super();
-		this.name = name;
-		this.calories = calories;
-		this.price = price;
-	}
-
 
 	public String getMenuLine() {
 		
