@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="utils.JpaUtil"/>
     <fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
     <fullyQualifiedTypeName name="javax.persistence.Persistence"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="com.epicode.GodFathersPizza.classes.FoodItem"/>
     <fullyQualifiedTypeName name="com.epicode.GodFathersPizza.classes.PizzaMargherita"/>
     <fullyQualifiedTypeName name="lombok.ToString"/>
+    <fullyQualifiedTypeName name="javax.swing.plaf.synth.SynthOptionPaneUI"/>
 </qualifiedTypeNameHistroy>
