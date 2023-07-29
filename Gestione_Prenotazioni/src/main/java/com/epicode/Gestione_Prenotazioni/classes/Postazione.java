@@ -36,6 +36,7 @@ public class Postazione {
 	private Edificio edificio;
 	
 	
+	
 	public Postazione ( String descrizione, TipoPostazione tipo, Integer numeroMassimoOccupanti, Edificio edificio) {
 		super();
 		

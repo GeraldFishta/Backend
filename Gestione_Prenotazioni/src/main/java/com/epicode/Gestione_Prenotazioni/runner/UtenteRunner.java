@@ -20,6 +20,11 @@ public class UtenteRunner implements CommandLineRunner {
 		Utente utente1 = utente.creaUtente("oldboy7", "Gennaro Piccoli", "genna@gmail.com");
 		utente.saveUtente(utente1);
 		
+		Utente utente2 = utente.creaUtente("youngboy6", "Gennara Grande", "gennarinazuccherina@gmail.com");
+		utente.saveUtente(utente2);
+		
+		Utente utente3 = utente.creaUtente("averageboy5", "Giampiero Tecnologia", "alberipotenti@gmail.com");
+		utente.saveUtente(utente3);
 		
 	}
 	

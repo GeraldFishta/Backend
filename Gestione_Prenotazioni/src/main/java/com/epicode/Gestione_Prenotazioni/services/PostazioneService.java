@@ -1,5 +1,8 @@
 package com.epicode.Gestione_Prenotazioni.services;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,6 +14,7 @@ import com.epicode.Gestione_Prenotazioni.classes.Utente;
 import com.epicode.Gestione_Prenotazioni.enums.TipoPostazione;
 import com.epicode.Gestione_Prenotazioni.repository.EdificioRepository;
 import com.epicode.Gestione_Prenotazioni.repository.PostazioneRepository;
+import com.epicode.Gestione_Prenotazioni.repository.PrenotazioneRepository;
 
 @Service
 public class PostazioneService {
@@ -18,6 +22,7 @@ public class PostazioneService {
 	@Autowired @Qualifier("postazione") private ObjectProvider<Postazione> postazioneProvider;
 	@Autowired PostazioneRepository postazioneRepo;
 	@Autowired EdificioRepository edificioRepo;
+	@Autowired PrenotazioneRepository prenotazioneRepo;
 	
 	public Postazione creaPostazione(String descrizione,TipoPostazione tipo, Integer numeroMassimoOccupanti, Edificio edificio) {
 		return postazioneProvider.getObject().builder()
@@ -65,5 +70,14 @@ public class PostazioneService {
 			return edificioRepo.findById(id).get();
 			
 		}
+	
+	public List<Postazione> findByTipoAndCitta(TipoPostazione tipo, String citta){
+		
+		return postazioneRepo.findByTipoAndCitta(tipo, citta);
+		
+	}
+		
+		
+	
 	
 }

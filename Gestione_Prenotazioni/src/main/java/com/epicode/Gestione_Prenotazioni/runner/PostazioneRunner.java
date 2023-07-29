@@ -26,5 +26,11 @@ public class PostazioneRunner implements CommandLineRunner {
 	Postazione postazione1 = postazione.creaPostazione("Stanza", TipoPostazione.PRIVATO , 4 , postazione.findEdificio(1l) );
 	postazione.savePostazione(postazione1);
 	
+	Postazione postazione2 = postazione.creaPostazione("Hall", TipoPostazione.OPENSPACE , 40 , postazione.findEdificio(2l) );
+	postazione.savePostazione(postazione2);
+	
+	Postazione postazione3 = postazione.creaPostazione("Villa", TipoPostazione.SALA_RIUNIONI , 105 , postazione.findEdificio(3l) );
+	postazione.savePostazione(postazione3);
+	
 	}
 }

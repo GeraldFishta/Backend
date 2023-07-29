@@ -21,8 +21,14 @@ public class EdificioRunner implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Edificio edificio1 = postazione.creaEdificio("Hotel", "Via dei pioppi, 3", "Ravenna");
+		Edificio edificio1 = postazione.creaEdificio("Hotel", "Via dei ravennati, 3", "Ravenna");
 		postazione.saveEdificio(edificio1);
+		
+		Edificio edificio2 = postazione.creaEdificio("Motel", "Via dei nani arrabbiati, 2", "New Foligno");
+		postazione.saveEdificio(edificio2);
+		
+		Edificio edificio3 = postazione.creaEdificio("B&B", "Via dei ciondoli, 30", "Rozzano City");
+		postazione.saveEdificio(edificio3);
 		
 	}
 	

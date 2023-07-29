@@ -31,10 +31,19 @@ public class PrenotazioneService {
 	
 	public void savePrenotazione(Prenotazione prenotazione) {
 			
-			prenotazioneRepo.save(prenotazione);
-			System.out.println(prenotazione);
+			if(prenotazioneRepo.findPrenotazioneByDataAndPostazione(prenotazione.getData(), prenotazione.getPostazione()) == null) {
+				if(prenotazioneRepo.findPrenotazioneByUtenteAndData(prenotazione.getUtente(), prenotazione.getData()) == null) {
+					prenotazioneRepo.save(prenotazione);
+					System.out.println(prenotazione);		
+				}else {
+					System.out.println("L'utente ha gia prenotazioni nella stessa data");
+				}
+			}else {
+				System.out.println("Prenotazione non disponibile");
+			}
 			
 		}
+	
 	
 
 }
