@@ -37,12 +37,22 @@ public class ContactController {
 		model.addObject("lista", listaContatti);
 		return model;
 	}
-	
-	@GetMapping("/rubrica/{id}")
-	public @ResponseBody String getRubrica(@PathVariable String id ) {
-
-		return "Contatto" + id;
-	}
-	
-	
 }
+//	@GetMapping("/rubrica/{id}")
+//	public @ResponseBody String getRubrica(@PathVariable String id ) {
+//
+//		return "Contatto" + id;
+//	}
+//	
+//	@GetMapping("/rubrica")
+//	public ModelAndView getContactById() (@PathVariable String id ){
+//
+//		Contact contact = contactService.getAllContact(id);
+//		System.out.println(listaContatti.size());
+//		
+//		ModelAndView model = new ModelAndView("rubrica");
+//		model.addObject("lista", listaContatti);
+//		return model;
+//	}
+//	
+//}
