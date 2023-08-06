@@ -35,19 +35,20 @@ public class DispositiviService {
 	@Autowired @Qualifier("getLaptop") ObjectProvider<Laptop> laptopProvider;
 	
 	
-	public Smartphone createSmartphone() {
-		return smartphoneProvider.getObject();
-	}
 	
-	public Tablet createTablet() {
+	public Tablet creaTablet() {
 		return tabletProvider.getObject();
 	}
 	
-	public Laptop createlapLaptop() {
+	public Laptop creaLaptop() {
 		return laptopProvider.getObject();
 	}
 	
-	public void saveDevice(Dispositivo dispositivo) {
+	public Smartphone creaSmartphone() {
+		return smartphoneProvider.getObject();
+	}
+	
+	public void salvaDispositivo(Dispositivo dispositivo) {
 		dispositivoRepo.save(dispositivo);
 		log.info("Dispositivo aggiunto correttamente sul DB!");
 	}
@@ -56,49 +57,51 @@ public class DispositiviService {
 		return pageableDispositiviRepo.findAll(pageable);
 	} 
 	
-	public Dispositivo getDeviceById(Long id) {
+	public Dispositivo getDispositivoById(Long id) {
 		return dispositivoRepo.findById(id).get();
 	}
 	
-	public Dispositivo changeDeviceStatus(Long id, StatoDispositivo s) {
+	public Dispositivo cambiaStatusDipositivo(Long id, StatoDispositivo stato) {
 		
 		Dispositivo dispositivo = dispositivoRepo.findById(id).get();
 		
-		if (dispositivo.getStatoDispositivo() == s) {
-			throw new DeviceStatusException("Il dispositivo possiede già lo stato che stai cercando di assegnare", HttpStatus.BAD_REQUEST);
+		if (dispositivo.getStatoDispositivo() == stato) {
+			throw new DeviceStatusException("Al dispositivo e gia stato assegnato questo stato.", HttpStatus.BAD_REQUEST);
 		}
 		
-		dispositivo.setStatoDispositivo(s);
+		dispositivo.setStatoDispositivo(stato);
 		dispositivoRepo.save(dispositivo);
-		log.info("Stato del dispositivo aggiornato! Nuovo stato: {}", dispositivo.getStatoDispositivo());
+		log.info("Lo stato del dispositivo e stato aggiornato a : {}", dispositivo.getStatoDispositivo());
 		return dispositivo;
 	}
 	
-	public String setDeviceUser(Long id, String username) {
+	public Dispositivo eliminaDispositivo(Long id) {
+		Dispositivo d = dispositivoRepo.findById(id).get();
+		dispositivoRepo.delete(d);
+		return d;
+	}
+	
+	public String setDispositivoUtente(Long id, String username) {
 		
 		Dispositivo dispositivo = dispositivoRepo.findById(id).get();
 		Utente utente = utenteRepository.findById(username).get();
 		
 		if ( dispositivo.getStatoDispositivo() == StatoDispositivo.IN_STATO_DI_MANUTENZIONE ) {
-			throw new DeviceStatusException("Il dispositivo si trova attualmente in manutenzione!", HttpStatus.NOT_ACCEPTABLE);
-		} else if ( dispositivo.getStatoDispositivo() != StatoDispositivo.DISPONIBILE ) {
-			throw new DeviceStatusException("Il dispositivo è già assegnato ad un altro dipendente!", HttpStatus.CONFLICT);
+			throw new DeviceStatusException("Il dispositivo e in stato manutenzione", HttpStatus.NOT_ACCEPTABLE);
+		} else if ( dispositivo.getStatoDispositivo() == StatoDispositivo.ASSEGNATO ) {
+			throw new DeviceStatusException("Il dispositivo è già assegnato.", HttpStatus.CONFLICT);
+		} else if ( dispositivo.getStatoDispositivo() == StatoDispositivo.SMANTELLATO ) {
+			throw new DeviceStatusException("Il dispositivo è stato smantellato.", HttpStatus.CONFLICT);
 		}
 		
 		dispositivo.setUtente(utente);
-		dispositivo.setStatoDispositivo( StatoDispositivo.ASSEGNATO );
-		
+		dispositivo.setStatoDispositivo( StatoDispositivo.ASSEGNATO );	
 		dispositivoRepo.save(dispositivo);
 		
-		return "Dispositivo n. " + dispositivo.getId() 
-				+ " associato a " + dispositivo.getUtente().getName() 
+		return " Dispositivo n: " + dispositivo.getId() 
+				+ " associato all'utente " + dispositivo.getUtente().getName() 
 				+ " " + dispositivo.getUtente().getSurname();
 	}
 	
-	public Dispositivo deleteDeviceById(Long id) {
-		Dispositivo d = dispositivoRepo.findById(id).get();
-		dispositivoRepo.delete(d);
-		return d;
-	}
 	
 }

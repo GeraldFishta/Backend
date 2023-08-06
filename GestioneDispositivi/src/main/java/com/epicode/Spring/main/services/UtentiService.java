@@ -28,25 +28,22 @@ public class UtentiService {
 		return fakeUtenteProvider.getObject();
 	}
 	
-	public void saveUser(Utente u) {
+	public void salvaUtente(Utente u) {
 		
 		if (utenteRepo.existsById(u.getUsername())) {
-			String msg = "L'utente " + u.getName() + " " + u.getSurname() + " è già esistente!";
+			String msg = "Errore... l'utente " + u.getName() + " " + u.getSurname() + " è già esistente nel DB!";
 			throw new EntityExistsException(msg);
 		}
-		
 		utenteRepo.save(u);
 		log.info("Utente salvato: {}", u);
 	}
 	
-	public void updateUser(Utente u) {
-		
+	public void aggiornaUtente(Utente u) {	
 		utenteRepo.save(u);
-		log.info("Dati aggiornati: {}", u);
-		
+		log.info("Dati aggiornati: {}", u);	
 	}
 	
-	public void deleteUser( String username ) {
+	public void eliminaUtente( String username ) {
 		utenteRepo.deleteById(username);
 		log.info("Utente eliminato: {}", username);
 	}

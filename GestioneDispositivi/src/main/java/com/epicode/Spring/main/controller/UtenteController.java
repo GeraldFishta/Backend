@@ -21,35 +21,34 @@ import com.epicode.Spring.main.services.UtentiService;
 @RequestMapping("/api/users")
 public class UtenteController {
 
-		@Autowired UtentiService utenteSvc;
+		@Autowired UtentiService utenteService;
 		
-
 		
 		@GetMapping
 		public ResponseEntity<Page<Utente>> getallUsers( Pageable pageable ) {
-			return new ResponseEntity<Page<Utente>>(utenteSvc.getAllUsers(pageable), HttpStatus.OK);
+			return new ResponseEntity<Page<Utente>>(utenteService.getAllUsers(pageable), HttpStatus.OK);
 		}
 		
 		@GetMapping("/{username}")
 		public ResponseEntity<Utente> getSingleUser( @PathVariable String username ) {
-			return new ResponseEntity<Utente>( utenteSvc.getSingleUser(username), HttpStatus.OK );
+			return new ResponseEntity<Utente>( utenteService.getSingleUser(username), HttpStatus.OK );
 		}
 		
-		@PostMapping
-		public ResponseEntity<Utente> setNewUser( @RequestBody Utente utente ) {
-			utenteSvc.saveUser(utente);
+		@PostMapping("/nuovo")
+		public ResponseEntity<Utente> setNuovoUtente( @RequestBody Utente utente ) {
+			utenteService.salvaUtente(utente);
 			return new ResponseEntity<Utente>( utente, HttpStatus.OK );
 		}
 		
-		@PutMapping
-		public ResponseEntity<Utente> updateUser( @RequestBody Utente utente ) {
-			utenteSvc.updateUser(utente);
+		@PutMapping("/aggiorna")
+		public ResponseEntity<Utente> aggiornaUtente( @RequestBody Utente utente ) {
+			utenteService.aggiornaUtente(utente);
 			return new ResponseEntity<Utente>( utente, HttpStatus.OK );
 		}
 		
 		@DeleteMapping("/{username}")
-		public ResponseEntity<String> deleteUser( @PathVariable String username ) {		
-			utenteSvc.deleteUser(username);
+		public ResponseEntity<String> eliminaUtente( @PathVariable String username ) {		
+			utenteService.eliminaUtente(username);
 			return new ResponseEntity<String>("Utente eliminato dal DB!", HttpStatus.OK);
 		}
 

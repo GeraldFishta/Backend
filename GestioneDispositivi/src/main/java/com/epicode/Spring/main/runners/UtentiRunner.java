@@ -17,9 +17,9 @@ public class UtentiRunner implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		for (int i = 0; i < 5; i++) {
-			utenteService.saveUser( utenteService.createFakeUser() );
-		}
+//		for (int i = 0; i < 7; i++) {
+//			utenteService.saveUser( utenteService.createFakeUser() );
+//		}
 		
 	}
 

@@ -13,12 +13,14 @@ public class DispositiviRunner implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		
-		for (int i = 0; i < 3; i++) {			
-			dispositivoService.saveDevice( dispositivoService.createSmartphone() );
-			dispositivoService.saveDevice( dispositivoService.createTablet() );
-			dispositivoService.saveDevice( dispositivoService.createlapLaptop() );
-		}
+				
+//		dispositivoService.saveDevice( dispositivoService.createSmartphone() );
+//		dispositivoService.saveDevice( dispositivoService.createTablet() );
+//		dispositivoService.saveDevice( dispositivoService.createlapLaptop() );		
+//		dispositivoService.saveDevice( dispositivoService.createSmartphone() );
+//		dispositivoService.saveDevice( dispositivoService.createTablet() );
+//		dispositivoService.saveDevice( dispositivoService.createlapLaptop() );	
+			
 	}
 	
 }

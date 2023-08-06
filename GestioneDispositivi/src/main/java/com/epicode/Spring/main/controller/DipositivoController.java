@@ -1,6 +1,6 @@
 package com.epicode.Spring.main.controller;
 
-import org.hibernate.TypeMismatchException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,50 +30,46 @@ public class DipositivoController {
 @Autowired DispositiviService dispositiviService;
 	
 	@GetMapping
-	public ResponseEntity<Page<Dispositivo>> getAllDevices( Pageable pageable ) {
+	public ResponseEntity<Page<Dispositivo>> getAllUsers( Pageable pageable ) {
 		return new ResponseEntity<Page<Dispositivo>>(dispositiviService.getAllDevices(pageable), HttpStatus.OK);
 	}
 	
-	@PostMapping
-	public ResponseEntity<Dispositivo> addNewDevice( @PathParam(value = "type") String type ) {
-		
-		Dispositivo d = null;
-		
-		if (type.equals("smartphone")) {			
-			Smartphone s = dispositiviService.createSmartphone();
-			d = s;
-			dispositiviService.saveDevice(s);
-		}else if( type.equals("tablet") ) {
-			Tablet t = dispositiviService.createTablet();
-			d = t;
-			dispositiviService.saveDevice(t);
-		}else if( type.equals("laptop") ) {
-			Laptop l = dispositiviService.createlapLaptop();
-			d = l;
-			dispositiviService.saveDevice(l);
-		}else {
-			throw new TypeMismatchException("Il dispositivo non esiste...");
-		}
-		
-		return new ResponseEntity<Dispositivo>(d, HttpStatus.OK);
-	}
-	
+	 @PostMapping("/smartphone")
+	 public ResponseEntity<Dispositivo> aggiungiSmartphone() {
+	   Smartphone smartphone = dispositiviService.creaSmartphone();
+	   dispositiviService.salvaDispositivo(smartphone);
+	   return new ResponseEntity<>(smartphone, HttpStatus.OK);
+	  }
+
+	 @PostMapping("/tablet")
+	 public ResponseEntity<Dispositivo> aggiungiTablet() {
+	   Tablet tablet = dispositiviService.creaTablet();
+	   dispositiviService.salvaDispositivo(tablet);
+	   return new ResponseEntity<>(tablet, HttpStatus.OK);
+	 }
+
+	 @PostMapping("/laptop")
+	 public ResponseEntity<Dispositivo> aggiungiLaptop() {
+	   Laptop laptop = dispositiviService.creaLaptop();
+	   dispositiviService.salvaDispositivo(laptop);
+	   return new ResponseEntity<>(laptop, HttpStatus.OK);
+	 }
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Dispositivo> modifyDeviceStatus( 
+	public ResponseEntity<Dispositivo> modificaStatusDipositivo( 
 							@PathVariable Long id, 
 							@PathParam(value = "status") StatoDispositivo status) {
-		return new ResponseEntity<Dispositivo>(dispositiviService.changeDeviceStatus(id, status), HttpStatus.OK);
+		return new ResponseEntity<Dispositivo>(dispositiviService.cambiaStatusDipositivo(id, status), HttpStatus.OK);
 	}
 	
 	@PutMapping("/modify/{id}")
-	public ResponseEntity<String> passingUserToDevice( @PathVariable Long id, @PathParam(value = "username") String username ) {
-		return new ResponseEntity<String>(dispositiviService.setDeviceUser(id, username), HttpStatus.OK);
+	public ResponseEntity<String> assegnaUtenteDispositivo( @PathVariable Long id, @PathParam(value = "username") String username ) {
+		return new ResponseEntity<String>(dispositiviService.setDispositivoUtente(id, username), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Dispositivo> deleteDevice( @PathVariable Long id ) {
-		return new ResponseEntity<Dispositivo>( dispositiviService.deleteDeviceById(id), HttpStatus.OK );
+	public ResponseEntity<Dispositivo> eliminaDispositivo( @PathVariable Long id ) {
+		return new ResponseEntity<Dispositivo>( dispositiviService.eliminaDispositivo(id), HttpStatus.OK );
 	}
 
 }
