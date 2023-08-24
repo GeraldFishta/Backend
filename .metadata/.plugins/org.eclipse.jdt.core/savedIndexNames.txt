@@ -133,7 +133,6 @@ INDEX VERSION 1.134+C:\Users\gefis\epicode-workspace\.metadata\.plugins\org.ecli
 1375712229.index
 1414882038.index
 2006973568.index
-439283057.index
 2826221895.index
 377899542.index
 2004249643.index
